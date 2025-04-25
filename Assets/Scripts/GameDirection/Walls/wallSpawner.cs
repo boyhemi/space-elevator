@@ -18,11 +18,12 @@ public class wallSpawner : MonoBehaviour
     {
         if ((int) player.transform.position.y %4 == 0 && (int)player.transform.position.y != posCheck)
         {
-             posCheck = (int)player.transform.position.y;
-           //  GameObject posObj = Instantiate(initWalls[Random.Range(0,2)], new Vector3(transform.position.x, transform.position.y + 4f ), Quaternion.identity);
+            posCheck = (int)player.transform.position.y;
             GameObject posObj = Instantiate(initWalls[Random.Range(0,2)], new Vector3(transform.position.x, transform.position.y + 4f ), Quaternion.identity);
+            // GameObject posObj = Instantiate(initWalls[Random.Range(0,2)], new Vector3(transform.position.x, transform.position.y + 4f ), Quaternion.identity);
              posObj.transform.parent = gameObject.transform;
-             Destroy(gameObject.transform.GetChild(0).gameObject);
+             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+
             
         }
     }

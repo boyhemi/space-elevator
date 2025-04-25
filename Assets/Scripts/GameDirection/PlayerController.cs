@@ -27,50 +27,45 @@ public class PlayerController : MonoBehaviour
 
         initScore.text = "Score: " + score.ToString();
 
-     transform.Translate(Vector3.up * objectSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * objectSpeed * Time.deltaTime);
 
-
-          if (left && transform.position.x >= -3)
+        if (left && transform.position.x >= -3)
         {
             transform.Translate(Vector3.left * objectSpeed * Time.deltaTime);
         }
-            if (right && transform.position.x <= 3)
+        if (right && transform.position.x <= 3)
         {
             transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
         }
+
+
+
+
     }
 
     public void leftCommand()
     {
-
-            transform.Translate(Vector3.left * objectSpeed * Time.deltaTime);
-
-
+        transform.Translate(Vector3.left * objectSpeed * Time.deltaTime);
     }
 
     public void rightCommand()
     {
-
-            transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
-
-
+        transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.gameObject.tag == "Blue Wall")
+    if (other.gameObject.tag == "Blue Wall")
         {
 
-                trail.Play();
+            trail.Play();
 
         }
     }
 
     private void OnTriggerExit(Collider other) {
-           if (other.gameObject.tag == "Blue Wall")
+    if (other.gameObject.tag == "Blue Wall")
         {
-
-                trail.Stop();
-
+            trail.Stop();
         }
     }
 

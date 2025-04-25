@@ -15,6 +15,6 @@ public class FollowCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  //   transform.Translate(Vector3.up * camSpeed * Time.deltaTime);
+      transform.Translate(Vector3.up * camSpeed * Time.deltaTime);
     }
 }
