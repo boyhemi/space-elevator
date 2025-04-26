@@ -53,9 +53,9 @@ public class gameManager : MonoBehaviour
 
 
     private void Update() {
-    initScore++;
-   // score.text = "Score: " + initScore.ToString();
-    PlayerPrefs.SetInt("highscore", initScore);
+        initScore++;
+        // score.text = "Score: " + initScore.ToString();
+        PlayerPrefs.SetInt("highscore", initScore);
     
         
     }
