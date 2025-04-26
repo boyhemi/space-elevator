@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class PlayerController : MonoBehaviour
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem trail;
     public ParticleSystem michaelBay;
     public int score;
-    public Text initScore;
+    public TMP_Text initScore;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
         }
-
-
-
-
     }
 
     public void leftCommand()
@@ -56,9 +53,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider other) {
     if (other.gameObject.tag == "Blue Wall")
         {
-
             trail.Play();
-
         }
     }
 
@@ -68,5 +63,8 @@ public class PlayerController : MonoBehaviour
             trail.Stop();
         }
     }
+
+
+    
 
 }
