@@ -11,8 +11,8 @@ enum BtnCommand{
 }
 // enum for trail states
 enum TrailState{
-    off = 0,
-    on = 1
+    enabled = 0,
+    disabled = 1
 }
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        KeyboardCommands();
+
         transform.Translate(Vector3.up * objectSpeed * Time.deltaTime);
 
         if (left && transform.position.x >= -3)
@@ -44,8 +46,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
         }
-    }
 
+    }
 
     // Simplified button command into a single command function with parameter for left button and right button in the enum
     public void buttonCommand(int comm)
@@ -62,9 +64,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+// Keyboard commands when ran only on unity editor
+    void KeyboardCommands()
+    {
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            left = true;
+            right = false;
+            buttonCommand((int)BtnCommand.leftBtn);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            left = false;
+            right = true;
+            buttonCommand((int)BtnCommand.rightBtn);
+        }
+        #endif
+    }
+
+
     void SetTrailState(int state)
     {
-        if (state == (int)TrailState.on)
+        if (state == (int)TrailState.enabled)
         {
             trail.Play();
         }
@@ -77,14 +100,14 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider other) {
     if (other.gameObject.tag == "Blue Wall")
         {
-            SetTrailState((int)TrailState.on);
+            SetTrailState((int)TrailState.enabled);
         }
     }
 
     private void OnTriggerExit(Collider other) {
     if (other.gameObject.tag == "Blue Wall")
         {
-            SetTrailState((int)TrailState.off);
+            SetTrailState((int)TrailState.disabled);
         }
     }
 

@@ -13,6 +13,7 @@ public class Laser3DController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb3D.velocity = transform.forward * laserSpeed;
         
     }
 
