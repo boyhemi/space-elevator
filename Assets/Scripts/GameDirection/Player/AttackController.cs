@@ -27,8 +27,7 @@ public class AttackController : MonoBehaviour
 
     public void Attack()
     {
-        Instantiate(prefabLaser, attackPoint.position, Quaternion.LookRotation(Vector3.up));
-
+        Instantiate(prefabLaser, attackPoint.position, attackPoint.rotation);
     }
 
 
