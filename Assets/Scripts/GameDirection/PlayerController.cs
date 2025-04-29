@@ -4,16 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
+// enum for button commands
+enum BtnCommand{
+    leftBtn = 0,
+    rightBtn = 1
+}
+// enum for trail states
+enum TrailState{
+    off = 0,
+    on = 1
+}
 public class PlayerController : MonoBehaviour
 {
+
     public float objectSpeed = 3f;
     public static bool left;
     public static bool right;
     public ParticleSystem trail;
     public ParticleSystem michaelBay;
-    public int score;
-    public TMP_Text initScore;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +33,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        initScore.text = "Score: " + score.ToString();
 
         transform.Translate(Vector3.up * objectSpeed * Time.deltaTime);
 
@@ -40,27 +46,45 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void leftCommand()
+
+    // Simplified button command into a single command function with parameter for left button and right button in the enum
+    public void buttonCommand(int comm)
     {
-        transform.Translate(Vector3.left * objectSpeed * Time.deltaTime);
+        switch(comm)
+        {
+            case (int)BtnCommand.leftBtn:
+                transform.Translate(Vector3.left * objectSpeed * Time.deltaTime);
+            break;
+
+            case (int)BtnCommand.rightBtn:
+                transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
+            break;
+        }
     }
 
-    public void rightCommand()
+    void SetTrailState(int state)
     {
-        transform.Translate(Vector3.right * objectSpeed * Time.deltaTime);
+        if (state == (int)TrailState.on)
+        {
+            trail.Play();
+        }
+        else
+        {
+            trail.Stop();
+        }
     }
 
     private void OnTriggerStay(Collider other) {
     if (other.gameObject.tag == "Blue Wall")
         {
-            trail.Play();
+            SetTrailState((int)TrailState.on);
         }
     }
 
     private void OnTriggerExit(Collider other) {
     if (other.gameObject.tag == "Blue Wall")
         {
-            trail.Stop();
+            SetTrailState((int)TrailState.off);
         }
     }
 

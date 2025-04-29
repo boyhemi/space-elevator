@@ -22,6 +22,7 @@ public class blueWallController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.SetActive(false);
+            gameManager.init.ShowGameOver();
         }    
     }
 }

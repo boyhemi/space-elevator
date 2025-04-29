@@ -23,6 +23,7 @@ public class redWallController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.SetActive(false);
+            gameManager.init.ShowGameOver();
         }
     }
 }
