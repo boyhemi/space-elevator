@@ -17,19 +17,18 @@ public class spawnMeteor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
-     public void meteorSpawn()
+
+    public void meteorSpawn()
     {
+        Instantiate(meteor, new Vector3(Random.Range(-1, 1), transform.position.y, transform.position.z), Quaternion.identity);
+        if (speed == 3)
+        {
 
-    Instantiate(meteor, new Vector3(Random.Range(-1, 1), transform.position.y, transform.position.z), Quaternion.identity);
-    if (speed == 3)
-    {
+            speed = 0;
 
-        CancelInvoke();
-
-    }
-    speed++;
+        }
+        speed++;
     }
 }

@@ -22,4 +22,13 @@ public class Laser3DController : MonoBehaviour
         // Fixed position issue
         transform.position += Vector3.up * laserSpeed * Time.deltaTime;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Meteorain")
+        {
+            collision.gameObject.SetActive(false);
+        }
+    }
+
 }
