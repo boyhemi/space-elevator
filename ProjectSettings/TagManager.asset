@@ -8,6 +8,7 @@ TagManager:
   - Blue Wall
   - Red Wall
   - Meteorain
+  - Laser
   layers:
   - Default
   - TransparentFX
