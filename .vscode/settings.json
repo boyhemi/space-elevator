@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "space-elevator.sln"
+    "dotnet.defaultSolution": "space-elevator.slnx"
 }
